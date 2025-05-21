@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.util.Date;
 
 @Data
 public class userDto extends RepresentationModel<userDto>{

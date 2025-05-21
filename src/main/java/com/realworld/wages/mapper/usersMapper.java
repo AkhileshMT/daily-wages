@@ -13,7 +13,7 @@ public class usersMapper {
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
         user.setUserName(dto.getUserName());
-        user.setPassword(passwordEncoder.encode(dto.getPassword())); // encode password here
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setType(dto.getType());
         user.setEmail(dto.getEmail());
         user.setActive(dto.getActive());
