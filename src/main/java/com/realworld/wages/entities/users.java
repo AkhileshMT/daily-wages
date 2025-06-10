@@ -48,6 +48,8 @@ public class users {
 	@Column(name = "isActive", nullable = false, length = 10)
 	private String active;
 
+	private String role;
+
 	private Long createdBy;
 
 	@CreationTimestamp

@@ -49,13 +49,6 @@ public class usersResource {
 	@PostMapping("/login")
 	public String manualLogin(@RequestBody userDto dto) {
 		return service.login(dto);
-//		users user = repo.findByUserName(dto.getUserName())
-//				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-//
-//		if (passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-//			return jwt.generateToken(dto.getUserName());
-//		} else {
-//			return "Invalid username or password!";
-//		}
+
 	}
 }
