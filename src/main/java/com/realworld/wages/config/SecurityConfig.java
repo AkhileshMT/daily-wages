@@ -26,12 +26,22 @@ public class SecurityConfig {
     @Autowired
     private CustomUserDetailService userDetailsService;
 
+    private static final String[] AUTH_WHITELIST = {
+            // -- Swagger UI v2
+            "/api-docs", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
+            "/configuration/security", "/swagger-ui.html", "/webjars/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/api-docs/**", "/swagger-ui/**"
+            // other public endpoints of API may be appended to this array
+    };
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/register", "/login").permitAll()
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
