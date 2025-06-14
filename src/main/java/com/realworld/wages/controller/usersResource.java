@@ -42,10 +42,8 @@ public class usersResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
 	}
 
-
 	@PostMapping("/login")
 	public String manualLogin(@RequestBody userDto dto) {
 		return service.login(dto);
-
 	}
 }
