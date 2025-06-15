@@ -1,8 +1,7 @@
 package com.realworld.wages.serviceIF;
 
+import com.realworld.wages.dto.storeEarningDto;
 import com.realworld.wages.entities.storeEarning;
-
-import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IstoreEarningService {
@@ -36,6 +35,22 @@ public interface IstoreEarningService {
      */
 
     List<storeEarning> findByIDEarningId(Long userId, Long storeEarningId);
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    List<storeEarning> fingByUserId(Long userId);
+
+
+    /**
+     *
+     * @param earning
+     * @return
+     */
+
+    public storeEarning updateStoreEarning(Long id , storeEarningDto earning);
 
 
 

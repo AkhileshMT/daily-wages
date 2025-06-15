@@ -1,7 +1,9 @@
 package com.realworld.wages.service;
 
+import com.realworld.wages.dto.storeEarningDto;
 import com.realworld.wages.entities.storeEarning;
 import com.realworld.wages.entities.users;
+import com.realworld.wages.mapper.storeEarningMapper;
 import com.realworld.wages.repository.storeEarningRepository;
 import com.realworld.wages.repository.userRepo;
 import com.realworld.wages.serviceIF.IstoreEarningService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class storeEarningService implements IstoreEarningService {
@@ -24,6 +27,9 @@ public class storeEarningService implements IstoreEarningService {
 
     @Autowired
     private storeEarningRepository storeRepo;
+
+    @Autowired
+    private storeEarningMapper earningMapper;
 
     public storeEarning create(Long id, storeEarning earning){
     
@@ -43,4 +49,16 @@ public class storeEarningService implements IstoreEarningService {
        return (earningRepo.findByIdEarningId(userId, storeEarningId));
     }
 
+
+    public List<storeEarning> fingByUserId(Long userId){
+        return (earningRepo.findByUserId(userId));
+    }
+
+    public storeEarning updateStoreEarning(Long id ,storeEarningDto earningDto){
+        storeEarning earningEntity = earningRepo.findById(id).orElseThrow();
+        earningEntity.setAmountAdded(earningDto.getAmountAdded());
+        earningEntity.setDescription(earningDto.getDescription());
+        earningEntity.setCurrentAmount(earningDto.getCurrentAmount());
+        return earningRepo.save(earningEntity);
+    }
 }
