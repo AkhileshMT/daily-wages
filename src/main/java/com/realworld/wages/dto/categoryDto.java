@@ -6,32 +6,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
-
 import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @Data
-public class storeEarningDto extends RepresentationModel<storeEarningDto>  implements Serializable {
+public class categoryDto extends RepresentationModel<categoryDto> implements Serializable {
 
-
-    private long storeEarningId;
+    private Long categoryId;
 
     private Long userId;
 
     @NotNull
-    @Size(min = 2, max = 50)
-    private String description;
+    @Size(min = 1, max = 100)
+    private String categoryName;
 
-    @NotNull
-    private Long amountAdded;
+    private boolean active=true;
 
     private Date createdDate;
 
     private Date modifiedDate;
-
-    @NotNull
-    private Long currentAmount;
 
 }

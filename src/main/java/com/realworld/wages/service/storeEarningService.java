@@ -10,10 +10,7 @@ import com.realworld.wages.serviceIF.IstoreEarningService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import org.springframework.data.domain.Pageable;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class storeEarningService implements IstoreEarningService {
