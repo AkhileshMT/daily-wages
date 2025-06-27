@@ -1,5 +1,6 @@
 package com.realworld.wages.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,19 +14,28 @@ import java.util.Date;
 @Entity
 @RequiredArgsConstructor
 @Hidden
-@Table(name = "category")
-public class category implements Serializable {
+@Table(name = "expenses")
+public class dailyExpensive implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long expensesId;
 
     @Column(name = "userId", nullable = false)
     private Long userId;
 
-    @Column(name = "category_name", unique = true, nullable = false, length = 50)
+    @Column(name = "title", unique = true, nullable = false, length = 50)
+    private String title;
+
+    @Column(name = "description", unique = true, nullable = false, length = 50)
+    private String description;
+
+    @Column(name = "amount", nullable = false)
+    private Long amount;
+
+    @Column(name = "category_name", length = 100)
     private String categoryName;
 
     @CreationTimestamp
@@ -36,7 +46,12 @@ public class category implements Serializable {
     @Column(name="modifiedDate", nullable=false)
     private Date modifiedDate;
 
-    @Column(name="isActive", nullable=false, insertable=false, columnDefinition = "boolean default true")
-    private boolean active;
+    @Column(name="categoryId", nullable = true, columnDefinition = "bigint(20) default 1")
+    private Long categoryId=(long) 1;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="categoryId", referencedColumnName="categoryId",insertable=false, updatable=false)
+    private category category;
 
 }
