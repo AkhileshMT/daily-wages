@@ -52,10 +52,17 @@ public class storeEarningService implements IstoreEarningService {
     }
 
     public storeEarning updateStoreEarning(Long id ,storeEarningDto earningDto){
+
         storeEarning earningEntity = earningRepo.findById(id).orElseThrow();
+
+        Long amountAdded = earningDto.getAmountAdded();
+        Long currentAmount = earningEntity.getCurrentAmount();
+        Long UpdateAmount = amountAdded + currentAmount;
+
         earningEntity.setAmountAdded(earningDto.getAmountAdded());
         earningEntity.setDescription(earningDto.getDescription());
-        earningEntity.setCurrentAmount(earningDto.getCurrentAmount());
+        earningEntity.setCurrentAmount(UpdateAmount);
+
         return earningRepo.save(earningEntity);
     }
 }

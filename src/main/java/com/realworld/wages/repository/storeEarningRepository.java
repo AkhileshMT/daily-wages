@@ -26,4 +26,8 @@ public interface storeEarningRepository extends JpaRepository<storeEarning,Long>
             "WHERE store_earning.user_id=:userId", nativeQuery = true)
     List <storeEarning> findByUserId(@Param("userId") Long userId);
 
+    @Query(value = "SELECT store_earning.* FROM store_earning " +
+            "WHERE store_earning.user_id=:userId", nativeQuery = true)
+    storeEarning findByUserIdNew(@Param("userId") Long userId);
+
 }

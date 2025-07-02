@@ -12,7 +12,7 @@ public interface IcategoryService {
      * @param cat
      * @return
      */
-    category createCategory(Long userId ,category cat);
+    category createCategory(category cat);
 
     /**
      *

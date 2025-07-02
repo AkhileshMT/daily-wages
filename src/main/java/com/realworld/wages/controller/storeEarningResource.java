@@ -60,6 +60,7 @@ public class storeEarningResource {
             @ApiResponse(responseCode = "201", content = @Content(schema = @Schema(implementation = storeEarningDto.class))) })
     @GetMapping(value = "/{userId}/{storeEarningId}",produces = { MediaType.APPLICATION_JSON_VALUE })
     public CollectionModel<storeEarningDto> findStoreEarningByID(@PathVariable Long userId, @PathVariable Long storeEarningId) throws ParseException {
+        System.out.println("UserId "+userId+" storeEarningId "+storeEarningId);
         List<storeEarning> earning = earningService.findByIDEarningId(userId, storeEarningId);
         List<storeEarningDto> earningDto = earning.stream().map(t ->{
             return earningMapper.mapToDto(t);
@@ -73,6 +74,7 @@ public class storeEarningResource {
             @ApiResponse(responseCode = "201", content = @Content(schema = @Schema(implementation = storeEarningDto.class))) })
     @GetMapping(value = "/{userId}",produces = { MediaType.APPLICATION_JSON_VALUE })
     public CollectionModel<storeEarningDto> findStoreByUserId(@PathVariable Long userId) throws ParseException{
+        System.out.println("UserId "+userId);
         List<storeEarning> earning = earningService.fingByUserId(userId);
         List<storeEarningDto> earningDto = earning.stream().map(t ->{
             return earningMapper.mapToDto(t);

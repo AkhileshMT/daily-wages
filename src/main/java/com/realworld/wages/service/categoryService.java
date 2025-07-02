@@ -21,9 +21,7 @@ public class categoryService implements IcategoryService {
     private userRepo repo;
 
     @Override
-    public category createCategory(Long userId,category cat) {
-        users user = repo.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
-        cat.setUserId(userId);
+    public category createCategory(category cat) {
         return catRepo.save(cat);
     }
 

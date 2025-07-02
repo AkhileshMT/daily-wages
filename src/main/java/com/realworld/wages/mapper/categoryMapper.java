@@ -14,7 +14,6 @@ public class categoryMapper {
     public categoryDto mapToDto(category cat){
        categoryDto catDto = new categoryDto();
        catDto.setCategoryId(cat.getCategoryId());
-       catDto.setUserId(cat.getUserId());
        catDto.setCategoryName(cat.getCategoryName());
        catDto.setActive(cat.isActive());
        catDto.setCreatedDate(stringUtil.getIndiaTime(cat.getCreatedDate()));

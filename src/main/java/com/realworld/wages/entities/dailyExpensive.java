@@ -26,10 +26,10 @@ public class dailyExpensive implements Serializable {
     @Column(name = "userId", nullable = false)
     private Long userId;
 
-    @Column(name = "title", unique = true, nullable = false, length = 50)
+    @Column(name = "title", length = 50)
     private String title;
 
-    @Column(name = "description", unique = true, nullable = false, length = 50)
+    @Column(name = "description",nullable = false, length = 50)
     private String description;
 
     @Column(name = "amount", nullable = false)

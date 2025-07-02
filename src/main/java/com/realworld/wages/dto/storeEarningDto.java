@@ -31,7 +31,6 @@ public class storeEarningDto extends RepresentationModel<storeEarningDto>  imple
 
     private Date modifiedDate;
 
-    @NotNull
     private Long currentAmount;
 
 }

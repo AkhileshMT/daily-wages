@@ -16,8 +16,6 @@ public class categoryDto extends RepresentationModel<categoryDto> implements Ser
 
     private Long categoryId;
 
-    private Long userId;
-
     @NotNull
     @Size(min = 1, max = 100)
     private String categoryName;

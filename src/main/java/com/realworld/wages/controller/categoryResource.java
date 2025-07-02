@@ -60,15 +60,15 @@ public class categoryResource {
         return CollectionModel.of(catDto);
     }
 
-    @PostMapping(value = "/create/{userId}",  produces = {
+    @PostMapping(value = "/create",  produces = {
             MediaType.APPLICATION_JSON_VALUE })
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public categoryDto create(@PathVariable Long userId, @Validated @RequestBody categoryDto catDto) throws ParseException {
+    public categoryDto create(@Validated @RequestBody categoryDto catDto) throws ParseException {
 
         category cat = catMapper.mapToEntity(catDto);
 
-        return catMapper.mapToDto(catService.createCategory(userId,cat));
+        return catMapper.mapToDto(catService.createCategory(cat));
     }
 
 
