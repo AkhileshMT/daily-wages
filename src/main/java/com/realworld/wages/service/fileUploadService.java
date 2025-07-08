@@ -30,6 +30,7 @@ public class fileUploadService implements IfileUploadService {
     @Autowired
     private dailyExpensiveRepository expenseRepo;
 
+
     private final String FOLDER_PATH="D:\\FileUpload";
 
     public fileUpload uploadImageToFileSystem(MultipartFile file, Long expenseId) throws IOException {
@@ -55,6 +56,10 @@ public class fileUploadService implements IfileUploadService {
                 .build());
 
         file.transferTo(new File(filePath));
+
+        expense.setName(newFileName);
+        expense.setFilePath(filePath);
+        expenseRepo.save(expense);
 
         return fileData;
     }
@@ -98,6 +103,12 @@ public class fileUploadService implements IfileUploadService {
         fileData.setType(file.getContentType());
         fileData.setFilePath(filePath);
         fileData.setExpenseId(expenseId);
+
+        expense.setName(newFileName);
+        expense.setFilePath(filePath);
+        expenseRepo.save(expense);
+
+
         return fileRepo.save(fileData);
     }
 

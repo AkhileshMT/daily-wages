@@ -30,6 +30,12 @@ public class dailyExpensiveDto extends RepresentationModel<dailyExpensiveDto> im
     @Size( max = 100 )
     private String categoryName;
 
+    @Size( max = 100 )
+    private String name;
+
+    @Size( max = 100 )
+    private String filePath;
+
     private Date createdDate;
 
     private Date modifiedDate;

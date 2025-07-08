@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +23,10 @@ public class fileUploadDto extends RepresentationModel<fileUploadDto> implements
 
     @Size( max = 100 )
     private String filePath;
+
+    private Date createdDate;
+
+    private Date modifiedDate;
 
     private byte[] imageData;
 

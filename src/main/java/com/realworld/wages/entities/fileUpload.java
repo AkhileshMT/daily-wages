@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Data
@@ -26,6 +30,14 @@ public class fileUpload {
 
     @Column(name = "filePath", length = 100)
     private String filePath;
+
+    @CreationTimestamp
+    @Column(name = "createdDate", nullable = false, updatable = false)
+    private Date createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "modifiedDate", nullable = false)
+    private Date modifiedDate;
 
     @Transient
     private byte[] imageData;

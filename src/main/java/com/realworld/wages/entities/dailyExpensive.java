@@ -32,6 +32,12 @@ public class dailyExpensive implements Serializable {
     @Column(name = "description",nullable = false, length = 50)
     private String description;
 
+    @Column(name = "ImageName", length = 100)
+    private String name;
+
+    @Column(name = "filePath", length = 100)
+    private String filePath;
+
     @Column(name = "amount", nullable = false)
     private Long amount;
 

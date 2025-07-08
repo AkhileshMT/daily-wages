@@ -2,7 +2,6 @@ package com.realworld.wages.controller;
 
 
 import com.realworld.wages.dto.categoryDto;
-import com.realworld.wages.dto.storeEarningDto;
 import com.realworld.wages.entities.category;
 import com.realworld.wages.mapper.categoryMapper;
 import com.realworld.wages.service.categoryService;
@@ -10,10 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jdk.jfr.Category;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -32,7 +28,6 @@ public class categoryResource {
 
     @Autowired
     private categoryMapper catMapper;
-
 
     @Operation(responses = {
             @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = categoryDto.class))),
@@ -70,7 +65,6 @@ public class categoryResource {
 
         return catMapper.mapToDto(catService.createCategory(cat));
     }
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
