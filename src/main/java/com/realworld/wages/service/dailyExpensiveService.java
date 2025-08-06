@@ -64,6 +64,15 @@ public class dailyExpensiveService implements IdailyExpensiveService {
         return expenseRepo.ExpenseByUserId(userId);
     }
 
+    public List<dailyExpensive> searchExpensive(Long userId, String val){
+        try {
+            Long expenseId = Long.parseLong(val);
+            return expenseRepo.searchByExpenseId(userId, expenseId);
+        } catch (NumberFormatException e) {
+            return expenseRepo.ExpensiveSearch(userId, val);
+        }
+    }
+
     public dailyExpensive put(Long expenseId, Long userId, dailyExpensiveDto expenseDto){
         dailyExpensive expenses = expenseRepo.findById(expenseId).orElseThrow(() -> new EntityNotFoundException("Expense Id not found with id: " + expenseId));
 

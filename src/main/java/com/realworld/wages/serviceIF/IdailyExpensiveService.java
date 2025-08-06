@@ -33,4 +33,13 @@ public interface IdailyExpensiveService {
      * @return
      */
     dailyExpensive put(Long expenseId, Long userId, dailyExpensiveDto expenseDto);
+
+
+    /**
+     *
+     * @param userId
+     * @param val
+     * @return
+     */
+    List<dailyExpensive> searchExpensive(Long userId, String val);
 }

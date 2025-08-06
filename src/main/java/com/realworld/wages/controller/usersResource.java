@@ -33,8 +33,7 @@ public class usersResource {
 	public String greet() {
 		return "Welcome Akhilesh";
 	}
-
-
+	
 	@PostMapping("/register")
 	public ResponseEntity<userDto> register(@RequestBody userDto dto){
 		users savedUser = service.register(dto);

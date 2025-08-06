@@ -69,6 +69,20 @@ public class dailyExpensiveResource {
         return CollectionModel.of(expenseDto);
     }
 
+    @Operation(responses = {
+            @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = dailyExpensiveDto.class))),
+            @ApiResponse(responseCode = "201", content = @Content(schema = @Schema(implementation = dailyExpensiveDto.class))) })
+    @GetMapping(value = "/search/{userId}/{Val}", produces = {
+            MediaType.APPLICATION_JSON_VALUE
+    })
+    public CollectionModel<dailyExpensiveDto> searchEngine(@PathVariable Long userId, @PathVariable String Val){
+        List<dailyExpensive> expense = expenseService.searchExpensive(userId, Val);
+        List<dailyExpensiveDto> expenseDto = expense.stream().map(t ->{
+            return  expenseMapper.mapToDto(t);
+        }).toList();
+        return CollectionModel.of(expenseDto);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @PutMapping(value = "/put/{expenseId}/{userId}",produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -76,4 +90,6 @@ public class dailyExpensiveResource {
         dailyExpensive expensive = expenseService.put(expenseId, userId, expenseDto);
         return expenseMapper.mapToDto(expensive);
     }
+
+
 }
