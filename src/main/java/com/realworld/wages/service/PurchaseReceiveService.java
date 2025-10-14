@@ -201,6 +201,9 @@ public class PurchaseReceiveService implements IPurchaseReceiveService {
             for (PurchaseReceiveLineItemDto l : savedDto.getLineItems()) {
                 l.setReceivedId(saved.getReceivedId());
             }
+
+
+            
         }
 
         return savedDto;
